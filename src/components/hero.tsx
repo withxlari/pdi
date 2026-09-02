@@ -1,81 +1,141 @@
 import { motion } from "motion/react";
-import { ArrowDown, Download, Sparkles } from "lucide-react";
+import { Building2, Briefcase, CalendarDays, Github, Linkedin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { perfil } from "@/data/pdi";
 
-const stats = [
-  { value: "APIs", label: "REST e integrações em produção" },
-  { value: "-70%", label: "tempo de resposta após refatorações" },
-  { value: "24/7", label: "mentalidade de observabilidade" },
-];
+function diffPartes(from: Date, to: Date) {
+  let anos = to.getFullYear() - from.getFullYear();
+  let meses = to.getMonth() - from.getMonth();
+  let dias = to.getDate() - from.getDate();
+  if (dias < 0) {
+    meses -= 1;
+    dias += new Date(to.getFullYear(), to.getMonth(), 0).getDate();
+  }
+  if (meses < 0) {
+    anos -= 1;
+    meses += 12;
+  }
+  return {
+    a: Math.max(0, anos),
+    m: Math.max(0, meses),
+    d: Math.max(0, dias),
+  };
+}
+
+function Contador({ label, valor }: { label: string; valor: { a: number; m: number; d: number } }) {
+  return (
+    <div className="rounded-2xl border border-border bg-background/60 p-4">
+      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+        {label}
+      </p>
+      <p className="mt-2 flex items-baseline gap-2 font-display text-2xl font-bold text-primary">
+        {valor.a}
+        <span className="text-xs font-medium text-muted-foreground">a</span>
+        {valor.m}
+        <span className="text-xs font-medium text-muted-foreground">m</span>
+        {valor.d}
+        <span className="text-xs font-medium text-muted-foreground">d</span>
+      </p>
+    </div>
+  );
+}
 
 export function Hero() {
+  const hoje = new Date();
+  const inicio = new Date(perfil.dataInicioISO);
+  const fim = new Date(perfil.dataFimISO);
+  const decorrido = diffPartes(inicio, hoje > inicio ? hoje : inicio);
+  const restante = diffPartes(hoje < fim ? hoje : fim, fim);
+
   return (
-    <section className="surface-aurora relative overflow-hidden px-5 pb-20 pt-20 sm:pt-28">
-      <div className="mx-auto w-full max-w-5xl">
+    <section id="sobre" className="surface-aurora relative scroll-mt-20 overflow-hidden px-5 pb-16 pt-16 sm:pt-24">
+      <div className="mx-auto grid w-full max-w-6xl items-start gap-10 lg:grid-cols-[1.15fr_1fr]">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-[var(--shadow-soft)] backdrop-blur"
         >
-          <Sparkles className="size-3.5 text-primary" aria-hidden="true" />
-          Desenvolvedora back-end · disponível para novos desafios
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground shadow-[var(--shadow-soft)] backdrop-blur">
+            <Sparkles className="size-3.5 text-primary" aria-hidden="true" />
+            Plano de Desenvolvimento Individual
+          </span>
+
+          <h1 className="mt-6 text-4xl font-bold leading-[1.05] sm:text-6xl">
+            Olá, eu sou <span className="text-gradient">{perfil.primeiroNome} {perfil.sobrenome}</span>
+          </h1>
+
+          <p className="mt-4 text-xl font-medium text-foreground sm:text-2xl">{perfil.cargo}</p>
+          <p className="mt-1 text-sm text-muted-foreground">{perfil.stackResumo}</p>
+
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">{perfil.bio}</p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Button variant="hero" size="xl" asChild>
+              <a href={perfil.github} target="_blank" rel="noreferrer">
+                <Github className="size-4" aria-hidden="true" />
+                GitHub
+              </a>
+            </Button>
+            <Button variant="soft" size="xl" asChild>
+              <a href={perfil.linkedin} target="_blank" rel="noreferrer">
+                <Linkedin className="size-4" aria-hidden="true" />
+                LinkedIn
+              </a>
+            </Button>
+          </div>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+        <motion.aside
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] sm:text-6xl"
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+          className="card-soft p-6 shadow-[var(--shadow-glow)]"
         >
-          Eu transformo regra de negócio bagunçada em{" "}
-          <span className="text-gradient">back-end que dorme tranquilo</span>.
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-        >
-          Sou a Larissa Vitória. Trabalho onde o problema realmente mora: modelagem de dados,
-          APIs previsíveis e código que a próxima pessoa consegue ler. Aqui você não vê uma lista de
-          tecnologias — vê como eu penso quando algo quebra às 2 da manhã.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-9 flex flex-wrap items-center gap-3"
-        >
-          <Button variant="hero" size="xl" asChild>
-            <a href="#projetos">
-              Ver projetos
-              <ArrowDown className="size-4" aria-hidden="true" />
-            </a>
-          </Button>
-          <Button variant="soft" size="xl" asChild>
-            <a href="/curriculo-larissa-vitoria.pdf" download>
-              <Download className="size-4" aria-hidden="true" />
-              Baixar currículo
-            </a>
-          </Button>
-        </motion.div>
-
-        <motion.dl
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.36 }}
-          className="mt-14 grid gap-4 sm:grid-cols-3"
-        >
-          {stats.map((stat) => (
-            <div key={stat.label} className="card-soft p-5">
-              <dt className="font-display text-2xl font-bold text-foreground">{stat.value}</dt>
-              <dd className="mt-1 text-sm text-muted-foreground">{stat.label}</dd>
+          <div className="flex items-center gap-4">
+            {perfil.fotoUrl ? (
+              <img
+                src={perfil.fotoUrl}
+                alt={`Foto de ${perfil.nomeCompleto}`}
+                className="size-14 rounded-full object-cover"
+              />
+            ) : (
+              <span className="grid size-14 place-items-center rounded-full bg-[image:var(--gradient-primary)] font-display text-lg font-bold text-primary-foreground">
+                {perfil.primeiroNome.charAt(0)}
+                {perfil.sobrenome.charAt(0)}
+              </span>
+            )}
+            <div>
+              <p className="font-display text-lg font-bold">{perfil.nomeCompleto}</p>
+              <p className="text-sm text-muted-foreground">{perfil.cargo}</p>
             </div>
-          ))}
-        </motion.dl>
+          </div>
+
+          <dl className="mt-6 space-y-2.5 text-sm">
+            <div className="flex items-center gap-2.5">
+              <Building2 className="size-4 text-primary" aria-hidden="true" />
+              <dd>{perfil.empresa}</dd>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <Briefcase className="size-4 text-primary" aria-hidden="true" />
+              <dd>{perfil.area}</dd>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <CalendarDays className="size-4 text-primary" aria-hidden="true" />
+              <dd>
+                {perfil.periodoInicio} — {perfil.periodoFim}
+              </dd>
+            </div>
+          </dl>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <Contador label="Tempo decorrido" valor={decorrido} />
+            <Contador label="Tempo restante" valor={restante} />
+          </div>
+
+          <p className="mt-5 text-xs text-muted-foreground">
+            Última atualização: {perfil.ultimaAtualizacao}
+          </p>
+        </motion.aside>
       </div>
     </section>
   );
