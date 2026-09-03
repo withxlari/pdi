@@ -1,6 +1,7 @@
 import { CalendarDays, ExternalLink, MapPin } from "lucide-react";
 import { Section } from "@/components/section";
 import { eventos } from "@/data/pdi";
+import { cn } from "@/lib/utils";
 
 export function Eventos() {
   return (
@@ -8,13 +9,26 @@ export function Eventos() {
       id="eventos"
       eyebrow="Comunidade"
       title="Eventos e Participações"
-      description="Conferências, workshops e meetups que participei para me manter atualizada e conectada com a comunidade tech."
+      description="Conferências, palestras e meetups que participei para me manter atualizada e conectada com a comunidade tech."
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {eventos.map((evento) => (
           <article key={evento.titulo} className="card-soft flex flex-col overflow-hidden">
-            <div className="relative h-36 bg-[image:var(--gradient-surface)] bg-secondary/60">
-              <span className="absolute right-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
+            <div className={cn(
+              "relative h-40 bg-secondary/60",
+              !evento.imagem && "bg-[image:var(--gradient-surface)]"
+            )}>
+              {evento.imagem && (
+                <img 
+                  src={evento.imagem} 
+                  alt={evento.titulo} 
+                  className="absolute inset-0 h-full w-full object-cover" 
+                />
+              )}
+              {/* Overlay suave caso a imagem seja muito clara */}
+              {evento.imagem && <div className="absolute inset-0 bg-black/10" />}
+              
+              <span className="absolute right-3 top-3 z-10 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground shadow-sm">
                 {evento.tipo}
               </span>
             </div>
@@ -48,6 +62,8 @@ export function Eventos() {
               {evento.link ? (
                 <a
                   href={evento.link}
+                  target="_blank"
+                  rel="noreferrer"
                   className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-medium text-primary hover:underline"
                 >
                   Saiba mais

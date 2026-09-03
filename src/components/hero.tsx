@@ -4,9 +4,14 @@ import { Button } from "@/components/ui/button";
 import { perfil } from "@/data/pdi";
 
 function diffPartes(from: Date, to: Date) {
+  if (isNaN(from.getTime()) || isNaN(to.getTime())) {
+    return { a: 0, m: 0, d: 0 };
+  }
+
   let anos = to.getFullYear() - from.getFullYear();
   let meses = to.getMonth() - from.getMonth();
   let dias = to.getDate() - from.getDate();
+  
   if (dias < 0) {
     meses -= 1;
     dias += new Date(to.getFullYear(), to.getMonth(), 0).getDate();
@@ -44,39 +49,42 @@ export function Hero() {
   const hoje = new Date();
   const inicio = new Date(perfil.dataInicioISO);
   const fim = new Date(perfil.dataFimISO);
+  
   const decorrido = diffPartes(inicio, hoje > inicio ? hoje : inicio);
   const restante = diffPartes(hoje < fim ? hoje : fim, fim);
 
   return (
-    <section id="sobre" className="surface-aurora relative scroll-mt-20 overflow-hidden px-5 pb-16 pt-16 sm:pt-24">
+    <section id="sobre" className="surface-aurora relative overflow-hidden px-5 pb-12 pt-12 sm:pt-16">
       <div className="mx-auto grid w-full max-w-6xl items-start gap-10 lg:grid-cols-[1.15fr_1fr]">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground shadow-[var(--shadow-soft)] backdrop-blur">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground shadow-[var(--shadow-soft)] backdrop-blur">
             <Sparkles className="size-3.5 text-primary" aria-hidden="true" />
             Plano de Desenvolvimento Individual
           </span>
 
-          <h1 className="mt-6 text-4xl font-bold leading-[1.05] sm:text-6xl">
+          <h1 className="mt-6 text-4xl font-bold leading-[1.05] sm:text-5xl">
             Olá, eu sou <span className="text-gradient">{perfil.primeiroNome} {perfil.sobrenome}</span>
           </h1>
 
-          <p className="mt-4 text-xl font-medium text-foreground sm:text-2xl">{perfil.cargo}</p>
+          <p className="mt-4 font-display text-xl font-bold text-foreground sm:text-2xl">
+            {perfil.cargo}
+          </p>
           <p className="mt-1 text-sm text-muted-foreground">{perfil.stackResumo}</p>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">{perfil.bio}</p>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">{perfil.bio}</p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button variant="hero" size="xl" asChild>
+            <Button variant="hero" size="lg" asChild>
               <a href={perfil.github} target="_blank" rel="noreferrer">
                 <Github className="size-4" aria-hidden="true" />
                 GitHub
               </a>
             </Button>
-            <Button variant="soft" size="xl" asChild>
+            <Button variant="soft" size="lg" asChild>
               <a href={perfil.linkedin} target="_blank" rel="noreferrer">
                 <Linkedin className="size-4" aria-hidden="true" />
                 LinkedIn

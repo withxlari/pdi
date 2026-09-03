@@ -1,17 +1,36 @@
-import { Heart } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
+import { perfil } from "@/data/pdi";
 
 export function SiteFooter() {
+  const anoAtual = new Date().getFullYear();
+
   return (
-    <footer
-      id="contato"
-      className="border-t border-border/60 bg-secondary/40 px-5 py-10 text-sm text-muted-foreground"
-    >
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <p className="flex items-center gap-1.5">
-          Feito com <Heart className="size-3.5 text-primary" aria-hidden="true" /> e muito café por
-          Larissa Vitória
+    <footer className="border-t border-border/60 bg-background/85 backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-5 py-6 sm:flex-row">
+        <p className="text-sm font-medium text-muted-foreground">
+          © {anoAtual} {perfil.nomeCompleto} — PDI pessoal · Última atualização: {perfil.ultimaAtualizacao}
         </p>
-        <p className="font-mono text-xs">{"// psiu: tem segredos escondidos por aqui"}</p>
+        
+        <div className="flex items-center gap-4">
+          <a
+            href={perfil.github}
+            target="_blank"
+            rel="noreferrer"
+            className="text-muted-foreground transition-colors hover:text-primary"
+            aria-label="Acessar GitHub"
+          >
+            <Github className="size-5" strokeWidth={1.5} />
+          </a>
+          <a
+            href={perfil.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="text-muted-foreground transition-colors hover:text-primary"
+            aria-label="Acessar LinkedIn"
+          >
+            <Linkedin className="size-5" strokeWidth={1.5} />
+          </a>
+        </div>
       </div>
     </footer>
   );

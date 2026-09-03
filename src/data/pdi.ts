@@ -1,30 +1,23 @@
-/**
- * ============================================================
- *  DADOS DO PDI — edite APENAS este arquivo para trocar o conteúdo.
- *  Todos os textos abaixo são placeholders. Substitua pelos seus.
- * ============================================================
- */
-
 export const perfil = {
   nomeCompleto: "Larissa Vitória",
   primeiroNome: "Larissa",
   sobrenome: "Vitória",
   cargo: "Desenvolvedora Back-end",
   stackResumo: "Java | Spring Boot | AWS | SQL",
-  empresa: "Sua empresa aqui",
+  empresa: "Freelancer",
   area: "Desenvolvimento Backend / Cloud",
-  periodoInicio: "jan. de 2026",
-  periodoFim: "jan. de 2027",
-  // Use formato ISO (AAAA-MM-DD) — os contadores de tempo usam estas datas.
-  dataInicioISO: "2026-01-01",
-  dataFimISO: "2027-01-01",
+  periodoInicio: "jan. de 2025",
+  periodoFim: "atualmente",
+  
+  dataInicioISO: "2025-01-01",
+  dataFimISO: "0000-00-00", 
+  
   ultimaAtualizacao: "02 de Setembro de 2026",
-  bio:
-    "Escreva aqui um parágrafo sobre você: o que te move na tecnologia, no que você está focando agora e que tipo de impacto você quer gerar.",
-  github: "https://github.com/seu-usuario",
-  linkedin: "https://linkedin.com/in/seu-usuario",
-  // Opcional: URL de uma foto sua. Deixe vazio para exibir as iniciais.
-  fotoUrl: "",
+  bio: "Sou apaixonada por tecnologia e construção de sistemas backend robustos. Atualmente foco meus estudos em Java, Spring Boot e Cloud (AWS e Azure), buscando evoluir como pessoa desenvolvedora e contribuir com soluções de impacto real.",
+  github: "https://github.com/withxlari",
+  linkedin: "https://www.linkedin.com/in/larissavitoriax/",
+  
+  fotoUrl: "/lari.jpg", 
 };
 
 export type Evento = {
@@ -35,52 +28,46 @@ export type Evento = {
   local: string;
   tags: string[];
   link?: string;
+  imagem?: string;
 };
 
 export const eventos: Evento[] = [
   {
-    titulo: "Nome do evento 1",
-    tipo: "Hackathon",
-    descricao: "Conte em uma ou duas frases o que você fez e aprendeu neste evento.",
-    data: "Fevereiro 2026",
-    local: "Cidade / Empresa",
-    tags: ["Tag 1", "Tag 2"],
-    link: "#",
+    titulo: "Galaxy AI Summit",
+    tipo: "Palestra",
+    descricao: "Participação no evento promovido pela Samsung Electronics sobre o futuro da inteligência artificial aplicada aos smartphones.",
+    data: "21 de Outubro de 2025",
+    local: "Universidade Cruzeiro do Sul",
+    tags: ["Samsung", "Galaxy AI", "Inovação"],
+    link: "https://www.linkedin.com/posts/larissavitoriax_galaxyaisummit-samsung-cruzeirodosul-activity-7387291895997095936-V1qF",
+    imagem: "/gemini.jpg",
   },
   {
-    titulo: "Nome do evento 2",
-    tipo: "Summit",
-    descricao: "Conte em uma ou duas frases o que você fez e aprendeu neste evento.",
-    data: "Outubro 2025",
-    local: "Cidade",
-    tags: ["Tag 1"],
-    link: "#",
-  },
-  {
-    titulo: "Nome do evento 3",
-    tipo: "Meetup",
-    descricao: "Conte em uma ou duas frases o que você fez e aprendeu neste evento.",
-    data: "Janeiro 2026",
-    local: "Cidade",
-    tags: ["Tag 1", "Tag 2"],
-  },
+    titulo: "Treinamento IA Generativa",
+    tipo: "Palestra",
+    descricao: "Evento com o time do Google Cloud focado em IA Generativa na prática e ação para o Guinness Book como maior treinamento híbrido de IA.",
+    data: "Outubro de 2025",
+    local: "Universidade Cruzeiro do Sul",
+    tags: ["Google Cloud", "IA Generativa", "Capacita+"],
+    link: "https://www.linkedin.com/posts/larissavitoriax_googlecloud-iagenerativa-tecnologia-activity-7404678002225311744-ymDi",
+    imagem: "/capacita.jpg", 
+  }
 ];
 
 export type Etapa = { etapa: string; titulo: string; foco: string; atual?: boolean };
 
 export const trajetoria: Etapa[] = [
-  { etapa: "Etapa 1", titulo: "Estagiária", foco: "Foco: fundamentos, linguagem principal e boas práticas", atual: true },
-  { etapa: "Etapa 2", titulo: "Desenvolvedora Júnior", foco: "Foco: APIs REST, testes e microsserviços" },
-  { etapa: "Etapa 3", titulo: "Desenvolvedora Pleno", foco: "Foco: arquitetura, cloud e sistemas distribuídos" },
-  { etapa: "Etapa 4", titulo: "Desenvolvedora Sênior", foco: "Foco: decisões técnicas, liderança e escalabilidade" },
-  { etapa: "Etapa 5", titulo: "Tech Lead ou Especialista", foco: "Foco: arquitetura de soluções, mentoria e impacto estratégico" },
+  { etapa: "Etapa 1", titulo: "Desenvolvedora Júnior", foco: "Foco: Cloud, APIs REST, Java, testes e microsserviços", atual: true },
+  { etapa: "Etapa 2", titulo: "Desenvolvedora Pleno", foco: "Foco: arquitetura, cloud e sistemas distribuídos" },
+  { etapa: "Etapa 3", titulo: "Desenvolvedora Sênior", foco: "Foco: decisões técnicas, liderança e escalabilidade" },
+  { etapa: "Etapa 4", titulo: "Tech Lead ou Especialista", foco: "Foco: arquitetura de soluções, mentoria e impacto estratégico" },
 ];
 
 export const metasEmAndamento: string[] = [
-  "Primeira meta em andamento",
-  "Segunda meta em andamento",
-  "Terceira meta em andamento",
-  "Quarta meta em andamento",
+  "Evoluir em Java e Spring Boot",
+  "Projetos focado em Java",
+  "Aprender AWS aplicada a projetos reais",
+  "Estudar para certificações AWS e Azure",
 ];
 
 export type StatusMeta = "planejado" | "progresso" | "concluido";
@@ -92,36 +79,36 @@ export type Meta = {
   progresso: number;
   prioridade: "Alta" | "Média" | "Baixa";
   status: StatusMeta;
-  prazo: string; // AAAA-MM-DD
+  icone: string;
 };
 
 export const metas: Meta[] = [
   {
-    titulo: "Título da meta concluída",
-    categoria: "Categoria",
-    descricao: "Descreva de forma objetiva o que precisa ser feito para concluir esta meta.",
-    progresso: 100,
-    prioridade: "Alta",
-    status: "concluido",
-    prazo: "2026-07-30",
-  },
-  {
-    titulo: "Título da meta em progresso",
-    categoria: "Cloud",
-    descricao: "Descreva de forma objetiva o que precisa ser feito para concluir esta meta.",
-    progresso: 55,
+    titulo: "Estudo aprofundado em Java",
+    categoria: "Back-end",
+    descricao: "Aprofundar conhecimentos em Java e Spring Boot, focando em conceitos de orientação a objetos, design patterns e desenvolvimento de APIs robustas.",
+    progresso: 40,
     prioridade: "Alta",
     status: "progresso",
-    prazo: "2026-10-15",
+    icone: "Code2",
   },
   {
-    titulo: "Título da meta planejada",
-    categoria: "Backend",
-    descricao: "Descreva de forma objetiva o que precisa ser feito para concluir esta meta.",
-    progresso: 5,
-    prioridade: "Média",
-    status: "planejado",
-    prazo: "2026-12-01",
+    titulo: "Projetos reais em Back-end",
+    categoria: "Projetos",
+    descricao: "Desenvolver e fazer o deploy de aplicações back-end completas do zero, simulando problemas e requisitos de negócios do mundo real.",
+    progresso: 25,
+    prioridade: "Alta",
+    status: "progresso",
+    icone: "Server",
+  },
+  {
+    titulo: "Estudo para AWS Developer",
+    categoria: "Cloud",
+    descricao: "Preparação focada para a certificação AWS Certified Developer Associate, dominando serviços fundamentais como EC2, S3, Lambda e DynamoDB.",
+    progresso: 15,
+    prioridade: "Alta",
+    status: "progresso",
+    icone: "Cloud",
   },
 ];
 
@@ -132,34 +119,54 @@ export type Contribuicao = {
   descricao: string;
   tags: string[];
   impactos: string[];
+  link?: string;
+  icone: string;
 };
 
-export const categoriasContribuicao = ["Backend", "Cloud", "Infra", "Estudos", "Projetos", "Comunidade"];
+export const categoriasContribuicao = ["Projetos", "Backend", "Estudos"];
 
 export const contribuicoes: Contribuicao[] = [
   {
-    titulo: "Nome do estudo ou projeto",
-    categoria: "Estudos",
+    titulo: "Cheffy (Restaurant ERP)",
+    categoria: "Backend",
     situacao: "Em andamento",
-    descricao: "Explique o que é, por que você começou e onde está hoje.",
-    tags: ["Tag 1", "Tag 2"],
-    impactos: ["Impacto 1", "Impacto 2"],
+    descricao: "Plataforma SaaS Multi-Tenant para gestão centralizada de restaurantes. Foco no desenvolvimento de uma arquitetura escalável utilizando Java 21, Spring Boot 3, mensageria com RabbitMQ e cache com Redis. O sistema engloba módulos integrados de cardápio digital, Kitchen Display System (KDS), gestão de mesas, estoque inteligente e relatórios financeiros, além de prever automações e insights através de Inteligência Artificial.",
+    tags: ["Java", "Spring Boot", "RabbitMQ", "Redis", "PostgreSQL"],
+    impactos: [
+      "Prática de arquitetura Multi-Tenant escalável.",
+      "Implementação de mensageria e eventos em tempo real.",
+      "Estudo aprofundado em integrações e automação com IA."
+    ],
+    link: "",
+    icone: "Server",
   },
   {
-    titulo: "Participação em comunidades",
-    categoria: "Comunidade",
-    situacao: "Em andamento",
-    descricao: "Explique como você participa e o que compartilha com a comunidade.",
-    tags: ["LinkedIn", "Eventos"],
-    impactos: ["Construção de marca pessoal", "Networking"],
-  },
-  {
-    titulo: "Nome do projeto prático",
+    titulo: "Cultiva (Plataforma Web)",
     categoria: "Projetos",
-    situacao: "Em andamento",
-    descricao: "Explique o problema resolvido, a solução e o resultado obtido.",
-    tags: ["Tag 1", "Tag 2"],
-    impactos: ["Impacto principal do projeto"],
+    situacao: "Finalizado",
+    descricao: "Plataforma voltada ao apoio de microempreendedores locais. Desenvolvi APIs RESTful para módulos de gestão financeira e precificação de serviços, otimizando o processamento de dados do usuário e auxiliando na organização de pequenos negócios.",
+    tags: ["Node.js", "Express", "PostgreSQL", "React", "Geolocalização"],
+    impactos: [
+      "Modelagem eficiente de banco de dados relacional.",
+      "Criação de rotas REST seguras e otimizadas.",
+      "Impacto direto na organização financeira local."
+    ],
+    link: "",
+    icone: "Sprout",
+  },
+  {
+    titulo: "Gestor de Obras",
+    categoria: "Projetos",
+    situacao: "Finalizado",
+    descricao: "Desenvolvimento de sistema web para organização e acompanhamento de obras, permitindo visualizar o progresso de tarefas. Foco na implementação de sistema de autenticação seguro e na integração fluida entre o front-end interativo e os dados armazenados.",
+    tags: ["JavaScript", "Node.js", "React", "PostgreSQL", "Tailwind"],
+    impactos: [
+      "Implementação prática de fluxos de autenticação.",
+      "Criação de interface orientada a dados.",
+      "Integração eficiente entre front-end e back-end."
+    ],
+    link: "",
+    icone: "HardHat",
   },
 ];
 
@@ -167,44 +174,135 @@ export type NivelSkill = "domino" | "estudando" | "estudar";
 
 export type GrupoRoadmap = {
   grupo: string;
+  icone: string;
   itens: { nome: string; nivel: NivelSkill }[];
 };
 
 export const roadmap: GrupoRoadmap[] = [
   {
     grupo: "Backend",
+    icone: "Server",
     itens: [
-      { nome: "Tecnologia que domino", nivel: "domino" },
-      { nome: "Tecnologia que estudo", nivel: "estudando" },
-      { nome: "Tecnologia que preciso estudar", nivel: "estudar" },
+      { nome: "Node.js", nivel: "domino" },
+      { nome: "Python", nivel: "domino" },
+      { nome: "FastAPI", nivel: "domino" },
+      { nome: "Java", nivel: "estudando" },
+      { nome: "Spring Boot", nivel: "estudando" },
+      { nome: "Spring Security", nivel: "estudando" },
+      { nome: "Microsserviços", nivel: "estudando" },
+      { nome: "Testes Integrados/Automatizados", nivel: "estudar" },
+      { nome: "Mensageria", nivel: "estudar" },
     ],
   },
   {
-    grupo: "Data Engineering",
+    grupo: "Banco de Dados",
+    icone: "Database",
     itens: [
-      { nome: "Tecnologia 1", nivel: "estudar" },
-      { nome: "Tecnologia 2", nivel: "estudando" },
+      { nome: "PostgreSQL", nivel: "domino" },
+      { nome: "MySQL", nivel: "domino" },
+      { nome: "SQL", nivel: "domino" },
     ],
   },
   {
-    grupo: "Cloud",
+    grupo: "Cloud & DevOps",
+    icone: "Cloud",
     itens: [
-      { nome: "Tecnologia 1", nivel: "domino" },
-      { nome: "Tecnologia 2", nivel: "estudando" },
+      { nome: "Git/GitHub", nivel: "domino" },
+      { nome: "Docker", nivel: "estudando" },
+      { nome: "Kubernetes", nivel: "estudando" },
+      { nome: "AWS", nivel: "estudando" },
+      { nome: "Microsoft Azure", nivel: "estudando" },
+      { nome: "DataDog", nivel: "estudar" },
+      { nome: "Terraform", nivel: "estudar" },
+      { nome: "CI/CD", nivel: "estudar" },
+    ],
+  },
+  {
+    grupo: "Frontend",
+    icone: "Layout",
+    itens: [
+      { nome: "JavaScript", nivel: "domino" },
+      { nome: "React", nivel: "domino" },
+      { nome: "Tailwind CSS", nivel: "domino" },
+    ],
+  },
+  {
+    grupo: "Certificações & Idiomas",
+    icone: "Award",
+    itens: [
+      { nome: "English EF SET C2 Proficient", nivel: "domino" },
     ],
   },
 ];
 
-export type SoftSkill = { titulo: string; descricao: string };
+export type SoftSkill = { 
+  titulo: string; 
+  descricao: string;
+  icone: string;
+};
 
 export const softSkillsPratico: SoftSkill[] = [
-  { titulo: "Organização", descricao: "Descreva como essa habilidade aparece no seu dia a dia." },
-  { titulo: "Aprendizado contínuo", descricao: "Descreva como essa habilidade aparece no seu dia a dia." },
-  { titulo: "Trabalho em equipe", descricao: "Descreva como essa habilidade aparece no seu dia a dia." },
+  { 
+    titulo: "Organização", 
+    descricao: "Mantenho rotina e tarefas sob controle com método.",
+    icone: "ListChecks"
+  },
+  { 
+    titulo: "Aprendizado contínuo", 
+    descricao: "Estudo todos os dias e busco evoluir tecnicamente.",
+    icone: "BookOpen"
+  },
+  { 
+    titulo: "Trabalho em equipe", 
+    descricao: "Colaboro ativamente e ajudo o time a entregar valor.",
+    icone: "Users"
+  },
+  { 
+    titulo: "Proatividade", 
+    descricao: "Antecipo necessidades e busco oportunidades de contribuir.",
+    icone: "Zap"
+  },
+  { 
+    titulo: "Documentação", 
+    descricao: "Documento processos e decisões para o time.",
+    icone: "FileText"
+  },
 ];
 
 export const softSkillsEvolucao: SoftSkill[] = [
-  { titulo: "Comunicação", descricao: "Descreva o que você está praticando para evoluir aqui." },
-  { titulo: "Visão de arquitetura", descricao: "Descreva o que você está praticando para evoluir aqui." },
-  { titulo: "Priorização", descricao: "Descreva o que você está praticando para evoluir aqui." },
+  { 
+    titulo: "Comunicação", 
+    descricao: "Expresso ideias com clareza em times e reuniões.",
+    icone: "MessageSquare"
+  },
+  { 
+    titulo: "Segurança para apresentar ideias", 
+    descricao: "Trabalhando para falar com mais confiança em público.",
+    icone: "Sparkles"
+  },
+  { 
+    titulo: "Pensamento sistêmico", 
+    descricao: "Aprendendo a enxergar o todo antes da parte.",
+    icone: "Workflow"
+  },
+  { 
+    titulo: "Visão de arquitetura", 
+    descricao: "Estudando padrões e decisões arquiteturais.",
+    icone: "Layers"
+  },
+  { 
+    titulo: "Autonomia técnica", 
+    descricao: "Evoluindo na resolução independente de problemas.",
+    icone: "Rocket"
+  },
+  { 
+    titulo: "Priorização", 
+    descricao: "Aprimorando a escolha do que entregar primeiro.",
+    icone: "Target"
+  },
+  { 
+    titulo: "Clareza em rituais ágeis", 
+    descricao: "Praticando objetividade em dailys e plannings.",
+    icone: "Activity"
+  },
 ];

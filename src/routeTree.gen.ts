@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContribuicoesRouteImport } from './routes/contribuicoes'
+import { Route as MetasRouteImport } from './routes/metas'
+import { Route as ObjetivoRouteImport } from './routes/objetivo'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
+import { Route as SoftSkillsRouteImport } from './routes/soft-skills'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContribuicoesRoute = ContribuicoesRouteImport.update({
+  id: '/contribuicoes',
+  path: '/contribuicoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetasRoute = MetasRouteImport.update({
+  id: '/metas',
+  path: '/metas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObjetivoRoute = ObjetivoRouteImport.update({
+  id: '/objetivo',
+  path: '/objetivo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SoftSkillsRoute = SoftSkillsRouteImport.update({
+  id: '/soft-skills',
+  path: '/soft-skills',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contribuicoes': typeof ContribuicoesRoute
+  '/metas': typeof MetasRoute
+  '/objetivo': typeof ObjetivoRoute
+  '/roadmap': typeof RoadmapRoute
+  '/soft-skills': typeof SoftSkillsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contribuicoes': typeof ContribuicoesRoute
+  '/metas': typeof MetasRoute
+  '/objetivo': typeof ObjetivoRoute
+  '/roadmap': typeof RoadmapRoute
+  '/soft-skills': typeof SoftSkillsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contribuicoes': typeof ContribuicoesRoute
+  '/metas': typeof MetasRoute
+  '/objetivo': typeof ObjetivoRoute
+  '/roadmap': typeof RoadmapRoute
+  '/soft-skills': typeof SoftSkillsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contribuicoes'
+    | '/metas'
+    | '/objetivo'
+    | '/roadmap'
+    | '/soft-skills'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contribuicoes'
+    | '/metas'
+    | '/objetivo'
+    | '/roadmap'
+    | '/soft-skills'
+  id:
+    | '__root__'
+    | '/'
+    | '/contribuicoes'
+    | '/metas'
+    | '/objetivo'
+    | '/roadmap'
+    | '/soft-skills'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContribuicoesRoute: typeof ContribuicoesRoute
+  MetasRoute: typeof MetasRoute
+  ObjetivoRoute: typeof ObjetivoRoute
+  RoadmapRoute: typeof RoadmapRoute
+  SoftSkillsRoute: typeof SoftSkillsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contribuicoes': {
+      id: '/contribuicoes'
+      path: '/contribuicoes'
+      fullPath: '/contribuicoes'
+      preLoaderRoute: typeof ContribuicoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metas': {
+      id: '/metas'
+      path: '/metas'
+      fullPath: '/metas'
+      preLoaderRoute: typeof MetasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/objetivo': {
+      id: '/objetivo'
+      path: '/objetivo'
+      fullPath: '/objetivo'
+      preLoaderRoute: typeof ObjetivoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soft-skills': {
+      id: '/soft-skills'
+      path: '/soft-skills'
+      fullPath: '/soft-skills'
+      preLoaderRoute: typeof SoftSkillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContribuicoesRoute: ContribuicoesRoute,
+  MetasRoute: MetasRoute,
+  ObjetivoRoute: ObjetivoRoute,
+  RoadmapRoute: RoadmapRoute,
+  SoftSkillsRoute: SoftSkillsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
